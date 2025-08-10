@@ -34,22 +34,71 @@ var require_react = __commonJS({
 // servers/home/ui/components/Model/Model.tsx
 var import_react = __toESM(require_react());
 function Model({ text, variant, children }) {
+  const cyberpunkBorder = "2px solid rgba(0,255,200,0.8)";
+  const neonGlow = "0 0 4px rgba(0,255,200,0.5), 0 0 8px rgba(0,255,200,0.3)";
   switch (variant) {
     case "normal":
       return /* @__PURE__ */ import_react.default.createElement(
         "div",
         {
           style: {
-            background: "purple",
-            padding: "20px",
-            border: "4px solid #fff",
-            borderRadius: "10px",
-            width: "50%",
-            marginBottom: "5px"
+            background: "rgba(10, 10, 20, 0.85)",
+            padding: "14px 18px",
+            border: cyberpunkBorder,
+            borderRadius: "6px",
+            width: "fit-content",
+            maxWidth: "80%",
+            marginBottom: "5px",
+            color: "#0fffc3",
+            fontWeight: 700,
+            fontSize: "15px",
+            fontFamily: '"Share Tech Mono", monospace',
+            boxShadow: neonGlow,
+            letterSpacing: "1px"
           }
         },
         text
       );
+    case "loading":
+      const [bars, setBars] = (0, import_react.useState)("");
+      const [visible, setVisible] = (0, import_react.useState)(true);
+      (0, import_react.useEffect)(() => {
+        let seconds = 0;
+        const interval = setInterval(() => {
+          seconds++;
+          setBars((prev) => prev + "|");
+          if (seconds >= 10) {
+            clearInterval(interval);
+            setTimeout(() => setVisible(false), 500);
+          }
+        }, 300);
+        return () => clearInterval(interval);
+      }, []);
+      if (!visible) return null;
+      return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement(
+        "div",
+        {
+          style: {
+            background: "rgba(5, 5, 15, 0.85)",
+            padding: "8px 14px",
+            border: cyberpunkBorder,
+            borderRadius: "6px",
+            minWidth: "200px",
+            textAlign: "center",
+            color: "#0fffc3",
+            fontFamily: '"Share Tech Mono", monospace',
+            fontSize: "14px",
+            boxShadow: neonGlow,
+            position: "fixed",
+            bottom: "50px",
+            right: "20px",
+            letterSpacing: "1px"
+          }
+        },
+        text,
+        " ",
+        bars
+      ));
     default:
       return /* @__PURE__ */ import_react.default.createElement("div", { style: { background: "red", padding: "20px", border: "2px", borderRadius: "10px" } }, `[ERROR] Unknown Variant: ${variant}`);
   }
@@ -58,4 +107,4 @@ export {
   Model
 };
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYWN0OnJlYWN0IiwiLi9zZXJ2ZXJzL2hvbWUvdWkvY29tcG9uZW50cy9Nb2RlbC9Nb2RlbC50c3giXSwic291cmNlUm9vdCI6Ii8iLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7QUFBQTtBQUFBLFdBQU8sVUFBVTtBQUFBO0FBQUE7OztBQ0FqQixtQkFBa0I7QUFRWCxTQUFTLE1BQU0sRUFBRSxNQUFNLFNBQVMsU0FBUyxHQUFnQjtBQUM5RCxVQUFRLFNBQVM7QUFBQSxJQUNmLEtBQUs7QUFDSCxhQUNFLDZCQUFBQSxRQUFBO0FBQUEsUUFBQztBQUFBO0FBQUEsVUFDQyxPQUFPO0FBQUEsWUFDTCxZQUFZO0FBQUEsWUFDWixTQUFTO0FBQUEsWUFDVCxRQUFRO0FBQUEsWUFDUixjQUFjO0FBQUEsWUFDZCxPQUFPO0FBQUEsWUFDUCxjQUFjO0FBQUEsVUFDaEI7QUFBQTtBQUFBLFFBQ0M7QUFBQSxNQUNIO0FBQUEsSUFFSjtBQUNFLGFBQU8sNkJBQUFBLFFBQUEsY0FBQyxTQUFJLE9BQU8sRUFBRSxZQUFZLE9BQU8sU0FBUyxRQUFRLFFBQVEsT0FBTyxjQUFjLE9BQU8sS0FBSSw0QkFBNEIsT0FBTyxFQUFHO0FBQUEsRUFDM0k7QUFDRjsiLCJuYW1lcyI6WyJSZWFjdCJdfQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYWN0OnJlYWN0IiwiLi9zZXJ2ZXJzL2hvbWUvdWkvY29tcG9uZW50cy9Nb2RlbC9Nb2RlbC50c3giXSwic291cmNlUm9vdCI6Ii8iLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7QUFBQTtBQUFBLFdBQU8sVUFBVTtBQUFBO0FBQUE7OztBQ0FqQixtQkFBMkM7QUFRcEMsU0FBUyxNQUFNLEVBQUUsTUFBTSxTQUFTLFNBQVMsR0FBZ0I7QUFDOUQsUUFBTSxrQkFBa0I7QUFDeEIsUUFBTSxXQUFXO0FBRWpCLFVBQVEsU0FBUztBQUFBLElBQ2YsS0FBSztBQUNILGFBQ0UsNkJBQUFBLFFBQUE7QUFBQSxRQUFDO0FBQUE7QUFBQSxVQUNDLE9BQU87QUFBQSxZQUNMLFlBQVk7QUFBQSxZQUNaLFNBQVM7QUFBQSxZQUNULFFBQVE7QUFBQSxZQUNSLGNBQWM7QUFBQSxZQUNkLE9BQU87QUFBQSxZQUNQLFVBQVU7QUFBQSxZQUNWLGNBQWM7QUFBQSxZQUNkLE9BQU87QUFBQSxZQUNQLFlBQVk7QUFBQSxZQUNaLFVBQVU7QUFBQSxZQUNWLFlBQVk7QUFBQSxZQUNaLFdBQVc7QUFBQSxZQUNYLGVBQWU7QUFBQSxVQUNqQjtBQUFBO0FBQUEsUUFDQztBQUFBLE1BQ0g7QUFBQSxJQUVKLEtBQUs7QUFDSCxZQUFNLENBQUMsTUFBTSxPQUFPLFFBQUksdUJBQVMsRUFBRTtBQUNuQyxZQUFNLENBQUMsU0FBUyxVQUFVLFFBQUksdUJBQVMsSUFBSTtBQUUzQyxrQ0FBVSxNQUFNO0FBQ2QsWUFBSSxVQUFVO0FBQ2QsY0FBTSxXQUFXLFlBQVksTUFBTTtBQUNqQztBQUNBLGtCQUFRLENBQUMsU0FBUyxPQUFPLEdBQUc7QUFDNUIsY0FBSSxXQUFXLElBQUk7QUFDakIsMEJBQWMsUUFBUTtBQUN0Qix1QkFBVyxNQUFNLFdBQVcsS0FBSyxHQUFHLEdBQUc7QUFBQSxVQUN6QztBQUFBLFFBQ0YsR0FBRyxHQUFHO0FBQ04sZUFBTyxNQUFNLGNBQWMsUUFBUTtBQUFBLE1BQ3JDLEdBQUcsQ0FBQyxDQUFDO0FBRUwsVUFBSSxDQUFDLFFBQVMsUUFBTztBQUVyQixhQUNFLDZCQUFBQSxRQUFBLDJCQUFBQSxRQUFBLGdCQUNFLDZCQUFBQSxRQUFBO0FBQUEsUUFBQztBQUFBO0FBQUEsVUFDQyxPQUFPO0FBQUEsWUFDTCxZQUFZO0FBQUEsWUFDWixTQUFTO0FBQUEsWUFDVCxRQUFRO0FBQUEsWUFDUixjQUFjO0FBQUEsWUFDZCxVQUFVO0FBQUEsWUFDVixXQUFXO0FBQUEsWUFDWCxPQUFPO0FBQUEsWUFDUCxZQUFZO0FBQUEsWUFDWixVQUFVO0FBQUEsWUFDVixXQUFXO0FBQUEsWUFDWCxVQUFVO0FBQUEsWUFDVixRQUFRO0FBQUEsWUFDUixPQUFPO0FBQUEsWUFDUCxlQUFlO0FBQUEsVUFDakI7QUFBQTtBQUFBLFFBQ0M7QUFBQSxRQUFLO0FBQUEsUUFBRTtBQUFBLE1BQ1YsQ0FDRjtBQUFBLElBRUo7QUFDRSxhQUFPLDZCQUFBQSxRQUFBLGNBQUMsU0FBSSxPQUFPLEVBQUUsWUFBWSxPQUFPLFNBQVMsUUFBUSxRQUFRLE9BQU8sY0FBYyxPQUFPLEtBQUksNEJBQTRCLE9BQU8sRUFBRztBQUFBLEVBQzNJO0FBQ0Y7IiwibmFtZXMiOlsiUmVhY3QiXX0=

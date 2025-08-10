@@ -60,6 +60,7 @@ export async function main(ns: NS): Promise<void> {
       variant='normal'
     />
   );
+
   // ns.tprintRaw(<Model text={`[INFO] Total Hacked Servers: ${serversHacked.length}`} variant='normal' />);
   // ns.tprintRaw(<Model text={`[INFO] Total Not Hacked Servers: ${serversnotHacked.length}`} variant='normal' />);
   ns.tprintRaw(<Model text={`[INFO] Hacked Servers: ${serversHacked}`} variant='normal' />);

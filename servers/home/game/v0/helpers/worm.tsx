@@ -52,10 +52,10 @@ export async function main(ns: NS): Promise<void> {
     smtp: ns.fileExists('relaySMTP.exe'),
   };
   const server = `${ns.args[0]}`;
-  ns.tprint(`Worm running on ${server}...`);
+  // ns.tprint(`Worm running on ${server}...`);
 
   // Running assumption that hacking level is high enough. This is checked in crawler.js
-  ns.tprint(server, ' hacking level:', ns.getServerRequiredHackingLevel(server));
+  // ns.tprint(server, ' hacking level:', ns.getServerRequiredHackingLevel(server));
 
   let modelText = '';
 

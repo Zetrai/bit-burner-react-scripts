@@ -2,7 +2,7 @@
 import { NS } from '@/NetscriptDefinitions';
 import React from 'react';
 
-import { Model } from '@ui/components/Model/Model';
+import { Model } from '@/servers/home/ui/components/Logger/Model';
 
 export async function main(ns: NS) {
   const ram: any = ns.args[0] || 8; // GB RAM per server

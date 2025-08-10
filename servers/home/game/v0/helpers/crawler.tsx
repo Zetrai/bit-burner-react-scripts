@@ -1,7 +1,7 @@
 import { NS } from '@/NetscriptDefinitions';
 import React from 'react';
 
-import { Model } from '@ui/components/Model/Model';
+import { Model } from '@/servers/home/ui/components/Logger/Model';
 
 const IGNORE = ['darkweb'];
 

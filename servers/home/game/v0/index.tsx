@@ -8,7 +8,7 @@ function resetData(ns) {
 }
 
 const waitForCrawler = async (ns: NS) => {
-  ns.tprintRaw(<Model text='Crawler: ' variant='loading' />);
+  ns.tprintRaw(<Model text='Crawler: ' waitFor={2 * 1000} variant='loader' />);
   while (true) {
     const text = ns.read('/game/v0/data/dynamicModelText.txt');
     if (text === 'Crawling Done') {

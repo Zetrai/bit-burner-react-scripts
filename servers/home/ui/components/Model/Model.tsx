@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 interface ButtonProps {
   text: string;
   variant: string;
+  waitFor?: number;
   children?: React.ReactNode;
 }
 
-export function Model({ text, variant, children }: ButtonProps) {
+export function Model({ text, variant, waitFor, children }: ButtonProps) {
   const cyberpunkBorder = '2px solid rgba(0,255,200,0.8)';
   const neonGlow = '0 0 4px rgba(0,255,200,0.5), 0 0 8px rgba(0,255,200,0.3)';
 
@@ -32,22 +33,22 @@ export function Model({ text, variant, children }: ButtonProps) {
           {text}
         </div>
       );
-    case 'loading':
+    case 'loader':
       const [bars, setBars] = useState('');
       const [visible, setVisible] = useState(true);
 
       useEffect(() => {
-        let seconds = 0;
+        let elapsed = 0;
         const interval = setInterval(() => {
-          seconds++;
+          elapsed += 300;
           setBars((prev) => prev + '|');
-          if (seconds >= 10) {
+          if (elapsed >= waitFor) {
             clearInterval(interval);
-            setTimeout(() => setVisible(false), 500); // brief delay before removal
+            setTimeout(() => setVisible(false), 500);
           }
         }, 300);
         return () => clearInterval(interval);
-      }, []);
+      }, [waitFor]);
 
       if (!visible) return null; // remove loader completely
 

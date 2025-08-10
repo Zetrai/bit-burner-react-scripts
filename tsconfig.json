@@ -29,7 +29,8 @@
       "@/*": ["./*"],
       "NetscriptDefinitions": ["NetscriptDefinitions.d.ts"],
       "@ui/*": ["servers/home/ui/*"],
-      "@game/*": ["servers/home/game/*"]
+      "@game/*": ["servers/home/game/*"],
+      "@v0/*": ["servers/home/game/v0/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like `./node_modules/@types`. */

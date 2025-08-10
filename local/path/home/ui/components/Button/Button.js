@@ -33,12 +33,61 @@ var require_react = __commonJS({
 
 // servers/home/ui/components/Button/Button.tsx
 var import_react = __toESM(require_react());
-function Button({ label, onClick, children }) {
-  const [count, setCount] = (0, import_react.useState)(0);
-  return /* @__PURE__ */ import_react.default.createElement("button", { onClick: () => setCount(count + 1) }, count);
+
+// servers/home/ui/components/Button/Button.styles.tsx
+var styles = {
+  crossBtn: {
+    padding: "6px 10px",
+    background: "rgba(0,0,0,0.6)",
+    border: "2px solid rgba(0,255,200,0.8)",
+    color: "#0fffc3",
+    borderRadius: "4px",
+    cursor: "pointer",
+    fontFamily: '"Share Tech Mono", monospace',
+    transition: "all 0.2s ease-in-out",
+    position: "absolute",
+    top: "10px",
+    right: "10px"
+  },
+  crossBtnHover: {
+    background: "rgba(0,255,200,0.1)",
+    boxShadow: "0 0 4px rgba(0,255,200,0.5), 0 0 8px rgba(0,255,200,0.3)"
+  },
+  successBtn: {
+    padding: "6px 12px",
+    background: "rgba(10, 20, 10, 0.85)",
+    border: "2px solid rgba(0,255,140,0.8)",
+    color: "#00ff8c",
+    borderRadius: "4px",
+    cursor: "pointer",
+    fontFamily: '"Share Tech Mono", monospace',
+    transition: "all 0.2s ease-in-out"
+  },
+  successBtnHover: {
+    background: "rgba(0,255,140,0.1)",
+    boxShadow: "0 0 4px rgba(0,255,140,0.5), 0 0 8px rgba(0,255,140,0.3)"
+  }
+};
+
+// servers/home/ui/components/Button/Button.tsx
+function Button({ variant, onClick, children }) {
+  const [isHovering, setIsHovering] = (0, import_react.useState)(false);
+  return /* @__PURE__ */ import_react.default.createElement(
+    "button",
+    {
+      style: {
+        ...styles[variant],
+        ...isHovering && styles[`${variant}Hover`]
+      },
+      onClick,
+      onMouseEnter: () => setIsHovering(true),
+      onMouseLeave: () => setIsHovering(false)
+    },
+    children
+  );
 }
 export {
   Button
 };
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYWN0OnJlYWN0IiwiLi9zZXJ2ZXJzL2hvbWUvdWkvY29tcG9uZW50cy9CdXR0b24vQnV0dG9uLnRzeCJdLCJzb3VyY2VSb290IjoiLyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBO0FBQUEsV0FBTyxVQUFVO0FBQUE7QUFBQTs7O0FDQWpCLG1CQUFnQztBQVF6QixTQUFTLE9BQU8sRUFBRSxPQUFPLFNBQVMsU0FBUyxHQUFnQjtBQUNoRSxRQUFNLENBQUMsT0FBTyxRQUFRLFFBQUksdUJBQVMsQ0FBQztBQUNwQyxTQUFPLDZCQUFBQSxRQUFBLGNBQUMsWUFBTyxTQUFTLE1BQU0sU0FBUyxRQUFRLENBQUMsS0FBSSxLQUFNO0FBQzVEOyIsIm5hbWVzIjpbIlJlYWN0Il19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlYWN0OnJlYWN0IiwiLi9zZXJ2ZXJzL2hvbWUvdWkvY29tcG9uZW50cy9CdXR0b24vQnV0dG9uLnRzeCIsIi4vc2VydmVycy9ob21lL3VpL2NvbXBvbmVudHMvQnV0dG9uL0J1dHRvbi5zdHlsZXMudHN4Il0sInNvdXJjZVJvb3QiOiIvIiwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUE7QUFBQSxXQUFPLFVBQVU7QUFBQTtBQUFBOzs7QUNBakIsbUJBQWdDOzs7QUNFekIsSUFBTSxTQUF3QztBQUFBLEVBQ25ELFVBQVU7QUFBQSxJQUNSLFNBQVM7QUFBQSxJQUNULFlBQVk7QUFBQSxJQUNaLFFBQVE7QUFBQSxJQUNSLE9BQU87QUFBQSxJQUNQLGNBQWM7QUFBQSxJQUNkLFFBQVE7QUFBQSxJQUNSLFlBQVk7QUFBQSxJQUNaLFlBQVk7QUFBQSxJQUNaLFVBQVU7QUFBQSxJQUNWLEtBQUs7QUFBQSxJQUNMLE9BQU87QUFBQSxFQUNUO0FBQUEsRUFDQSxlQUFlO0FBQUEsSUFDYixZQUFZO0FBQUEsSUFDWixXQUFXO0FBQUEsRUFDYjtBQUFBLEVBRUEsWUFBWTtBQUFBLElBQ1YsU0FBUztBQUFBLElBQ1QsWUFBWTtBQUFBLElBQ1osUUFBUTtBQUFBLElBQ1IsT0FBTztBQUFBLElBQ1AsY0FBYztBQUFBLElBQ2QsUUFBUTtBQUFBLElBQ1IsWUFBWTtBQUFBLElBQ1osWUFBWTtBQUFBLEVBQ2Q7QUFBQSxFQUNBLGlCQUFpQjtBQUFBLElBQ2YsWUFBWTtBQUFBLElBQ1osV0FBVztBQUFBLEVBQ2I7QUFDRjs7O0FEekJPLFNBQVMsT0FBTyxFQUFFLFNBQVMsU0FBUyxTQUFTLEdBQWdCO0FBQ2xFLFFBQU0sQ0FBQyxZQUFZLGFBQWEsUUFBSSx1QkFBUyxLQUFLO0FBQ2xELFNBQ0UsNkJBQUFBLFFBQUE7QUFBQSxJQUFDO0FBQUE7QUFBQSxNQUNDLE9BQU87QUFBQSxRQUNMLEdBQUcsT0FBTyxPQUFPO0FBQUEsUUFDakIsR0FBSSxjQUFjLE9BQU8sR0FBRyxPQUFPLE9BQThCO0FBQUEsTUFDbkU7QUFBQSxNQUNBO0FBQUEsTUFDQSxjQUFjLE1BQU0sY0FBYyxJQUFJO0FBQUEsTUFDdEMsY0FBYyxNQUFNLGNBQWMsS0FBSztBQUFBO0FBQUEsSUFDdEM7QUFBQSxFQUNIO0FBRUo7IiwibmFtZXMiOlsiUmVhY3QiXX0=

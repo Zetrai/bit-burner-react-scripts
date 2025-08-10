@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { styles } from './Logger.styles';
 
-interface ButtonProps {
+interface LoggerProps {
   text: string;
   variant: string;
   waitFor?: number;
   children?: React.ReactNode;
 }
 
-export function Model({ text, variant, waitFor, children }: ButtonProps) {
-  const cyberpunkBorder = '2px solid rgba(0,255,200,0.8)';
-  const neonGlow = '0 0 4px rgba(0,255,200,0.5), 0 0 8px rgba(0,255,200,0.3)';
-
+export function Model({ text, variant, waitFor, children }: LoggerProps) {
   switch (variant) {
     case 'info':
       return <div style={styles.logInfo}>{text}</div>;

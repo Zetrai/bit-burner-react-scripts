@@ -57,14 +57,14 @@ export async function main(ns: NS): Promise<void> {
   ns.tprintRaw(
     <Model
       text={`[INFO] Crawled ${servers.length} servers\n[INFO] Total Hacked Servers: ${serversHacked.length}\n[INFO] Total Not Hacked Servers: ${serversnotHacked.length}`}
-      variant='normal'
+      variant='info'
     />
   );
 
-  // ns.tprintRaw(<Model text={`[INFO] Total Hacked Servers: ${serversHacked.length}`} variant='normal' />);
-  // ns.tprintRaw(<Model text={`[INFO] Total Not Hacked Servers: ${serversnotHacked.length}`} variant='normal' />);
-  ns.tprintRaw(<Model text={`[INFO] Hacked Servers: ${serversHacked}`} variant='normal' />);
-  ns.tprintRaw(<Model text={`[WARNING]\n${dynamicModelText}`} variant='normal' />);
+  // ns.tprintRaw(<Model text={`[INFO] Total Hacked Servers: ${serversHacked.length}`} variant='info'>);
+  // ns.tprintRaw(<Model text={`[INFO] Total Not Hacked Servers: ${serversnotHacked.length}`} variant='info'>);
+  ns.tprintRaw(<Model text={`[INFO] Hacked Servers: ${serversHacked}`} variant='info' />);
+  ns.tprintRaw(<Model text={`[FAIL]\n${dynamicModelText}`} variant='fail' />);
 
   ns.write('/game/v0/data/dynamicModelText.txt', 'Crawling Done', 'w');
 }

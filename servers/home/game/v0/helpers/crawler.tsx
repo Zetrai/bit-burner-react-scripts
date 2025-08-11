@@ -1,7 +1,7 @@
 import { NS } from '@/NetscriptDefinitions';
 import React from 'react';
 
-import { Model } from '@/servers/home/ui/components/Logger/Logger';
+import { Logger } from '@/servers/home/ui/components/Logger/Logger';
 
 const IGNORE = ['darkweb'];
 
@@ -55,7 +55,7 @@ export async function main(ns: NS): Promise<void> {
   const serversnotHacked = ns.read('/game/v0/data/serversNotHacked.txt').split(',').filter(Boolean);
 
   ns.tprintRaw(
-    <Model
+    <Logger
       text={`[INFO] Crawled ${servers.length} servers\n[INFO] Total Hacked Servers: ${serversHacked.length}\n[INFO] Total Not Hacked Servers: ${serversnotHacked.length}`}
       variant='info'
     />
@@ -63,8 +63,8 @@ export async function main(ns: NS): Promise<void> {
 
   // ns.tprintRaw(<Model text={`[INFO] Total Hacked Servers: ${serversHacked.length}`} variant='info'>);
   // ns.tprintRaw(<Model text={`[INFO] Total Not Hacked Servers: ${serversnotHacked.length}`} variant='info'>);
-  ns.tprintRaw(<Model text={`[INFO] Hacked Servers: ${serversHacked}`} variant='info' />);
-  ns.tprintRaw(<Model text={`[FAIL]\n${dynamicModelText}`} variant='fail' />);
+  ns.tprintRaw(<Logger text={`[INFO] Hacked Servers: ${serversHacked}`} variant='info' />);
+  ns.tprintRaw(<Logger text={`[FAIL]\n${dynamicModelText}`} variant='fail' />);
 
   ns.write('/game/v0/data/dynamicModelText.txt', 'Crawling Done', 'w');
 }

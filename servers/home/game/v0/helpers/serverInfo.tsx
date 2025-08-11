@@ -3,8 +3,8 @@ import React from 'react';
 
 import { formatMoney, formatRam } from './helpers';
 
-import { Model } from '@/servers/home/ui/components/Logger/Logger';
-import { ServerInfo } from '@/servers/home/ui/components/ServerInfo/ServerInfo';
+import { Logger } from '@/servers/home/ui/components/Logger/Logger';
+import { TableModal } from '@/servers/home/ui/components/TableModal/TableModal';
 
 export async function main(ns: NS): Promise<void> {
   const target: string = `${ns.args[0]}` || ns.getHostname();
@@ -32,10 +32,10 @@ export async function main(ns: NS): Promise<void> {
     openPortCount: server.openPortCount,
   };
 
-  ns.tprintRaw(<Model text='Fetching Server Info...' variant='loader' waitFor={1200} />);
+  ns.tprintRaw(<Logger text='Fetching Server Info...' variant='loader' waitFor={1200} />);
 
   // Simulate fetching server info
   await ns.sleep(2000);
 
-  ns.tprintRaw(<ServerInfo info={info} variant='info' />);
+  ns.tprintRaw(<TableModal info={info} name='Key' value='Value' heading={`${info.hostname} Info`} variant='info' />);
 }

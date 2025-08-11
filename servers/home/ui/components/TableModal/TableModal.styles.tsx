@@ -10,6 +10,7 @@ export const styles: Record<string, CSSProperties> = {
     boxShadow: '0 0 12px rgba(0,255,200,0.3)',
     position: 'relative',
     minHeight: '200px',
+    marginBottom: '20px',
   },
   header: {
     display: 'flex',

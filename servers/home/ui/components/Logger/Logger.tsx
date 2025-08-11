@@ -8,7 +8,7 @@ interface LoggerProps {
   children?: React.ReactNode;
 }
 
-export function Model({ text, variant, waitFor, children }: LoggerProps) {
+export function Logger({ text, variant, waitFor, children }: LoggerProps) {
   switch (variant) {
     case 'info':
       return <div style={styles.logInfo}>{text}</div>;

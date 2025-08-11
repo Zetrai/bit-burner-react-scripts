@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Button } from '@/servers/home/ui/components/Button/Button';
-import { styles } from './ServerInfo.styles';
+import { styles } from './TableModal.styles';
 
 interface ServerInfoProps {
   info: any;
   variant: string;
+  name: string;
+  value: string;
+  heading: string;
   waitFor?: number; // optional timeout for auto-close
   children?: React.ReactNode;
 }
 
-export function ServerInfo({ info, variant, waitFor, children }: ServerInfoProps) {
+export function TableModal({ info, variant, name, value, heading, waitFor, children }: ServerInfoProps) {
   const [visible, setVisible] = useState(true);
 
   // Optional: auto-close after waitFor ms
@@ -34,14 +37,14 @@ export function ServerInfo({ info, variant, waitFor, children }: ServerInfoProps
 
       <div style={styles.modalContent}>
         <div style={styles.header}>
-          <h2>Server Info</h2>
+          <h2>{heading}</h2>
         </div>
 
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr>
-              <th style={{ textAlign: 'left', borderBottom: '1px solid #ccc', padding: '8px' }}>Key</th>
-              <th style={{ textAlign: 'left', borderBottom: '1px solid #ccc', padding: '8px' }}>Value</th>
+              <th style={{ textAlign: 'left', borderBottom: '1px solid #ccc', padding: '8px' }}>{name}</th>
+              <th style={{ textAlign: 'left', borderBottom: '1px solid #ccc', padding: '8px' }}>{value}</th>
             </tr>
           </thead>
           <tbody>
